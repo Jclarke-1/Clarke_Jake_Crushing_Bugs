@@ -7,6 +7,7 @@ let currentDraggedElement = null;
 //Add variable for reset button
 //add variable for label box div
 const labelBox = document.querySelectorAll(".label-box");
+const resetBttn = document.querySelector(".reset-btn");
 
 //Functions
 function dragStart() {
@@ -32,6 +33,14 @@ function dropped(e) {
         return;
     }
 
+
+    //drop the piece in
+    this.appendChild(currentDraggedElement);
+
+    //reset the reference
+    currentDraggedElement = null;
+}
+
     //function reset () {
     //console out to make sure it works!
     //collect all the labels and put them back, use a foreachloop
@@ -40,12 +49,14 @@ function dropped(e) {
     //labelBox.appendChild(); put back piece
     //}
 
-    //drop the piece in
-    this.appendChild(currentDraggedElement);
 
-    //reset the reference
-    currentDraggedElement = null;
-}
+    //refresh the page for the game reset
+    function reset () {
+        console.log("reset");
+        history.go(0);
+        }
+
+
 
 //Event Listeners 
 //For everything in the labels container, it will create a temporary variable called label and then we add an event listener when we start dragging, when that happens we call the function dragStart
@@ -57,6 +68,8 @@ targetZones.forEach(zone => {
     zone.addEventListener("dragover", dragOver);
     zone.addEventListener("drop", dropped);
 });
+
+resetBttn.addEventListener("click", reset);
 
 //add event listener for the reset button
 //listen for the click event, call a reset function
