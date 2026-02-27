@@ -43,14 +43,6 @@ function dropped(e) {
     currentDraggedElement = null;
 }
 
-    //function reset () {
-    //console out to make sure it works!
-    //collect all the labels and put them back, use a foreachloop
-    //check all the targetzones/loop through all target zones, see IF the dropzone has a child(label) in it
-    //if the dropzone does have a child in it, add that label back to the pieces div "label-box" div
-    //labelBox.appendChild(); put back piece
-    //}
-
 
 //reset funciton
 
