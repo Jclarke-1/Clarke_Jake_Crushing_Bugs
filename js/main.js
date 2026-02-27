@@ -2,12 +2,14 @@ console.log("JavaScript File is linked");
 
 // QueryselectorALL for multiple things, and select everything with the class "label"
 const labels = document.querySelectorAll(".label");
-const targetZones = document.querySelectorAll(".target-zone");
+const targetZones = document.querySelectorAll('.target-zone');
 let currentDraggedElement = null;
 //Add variable for reset button
 //add variable for label box div
-const labelBox = document.querySelectorAll(".label-box");
 const resetBttn = document.querySelector(".reset-btn");
+const labelBox = document.getElementById("#label-box");
+
+
 
 //Functions
 function dragStart() {
@@ -35,7 +37,7 @@ function dropped(e) {
 
 
     //drop the piece in
-    this.appendChild(currentDraggedElement);
+    this.append(currentDraggedElement);
 
     //reset the reference
     currentDraggedElement = null;
@@ -50,11 +52,17 @@ function dropped(e) {
     //}
 
 
-    //refresh the page for the game reset
-    function reset () {
-        console.log("reset");
-        history.go(0);
-        }
+//reset funciton
+
+function resetPuzzle() {
+targetZones.forEach(zone => {
+    const labelCon = document.getElementsByClassName("labelboxes");
+    let child = zone.firstElementChild;
+if (child) {
+    labelCon[0].appendChild(child);
+}
+});
+}
 
 
 
@@ -69,7 +77,7 @@ targetZones.forEach(zone => {
     zone.addEventListener("drop", dropped);
 });
 
-resetBttn.addEventListener("click", reset);
 
 //add event listener for the reset button
 //listen for the click event, call a reset function
+resetBttn.addEventListener("click", resetPuzzle);
