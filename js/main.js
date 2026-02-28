@@ -7,7 +7,7 @@ let currentDraggedElement = null;
 //Add variable for reset button
 //add variable for label box div
 const resetBttn = document.querySelector(".reset-btn");
-const labelBox = document.getElementById("#label-box");
+const labelBox = document.querySelector("#label-box");
 
 
 
@@ -46,15 +46,26 @@ function dropped(e) {
 
 //reset funciton
 
+// function resetPuzzle() {
+// targetZones.forEach(zone => {
+//     const labelCon = document.getElementsByClassName("labelboxes");
+//     let child = zone.firstElementChild;
+// if (child) {
+//     labelCon[0].appendChild(child);
+// }
+// });
+// }
+
 function resetPuzzle() {
-targetZones.forEach(zone => {
-    const labelCon = document.getElementsByClassName("labelboxes");
-    let child = zone.firstElementChild;
-if (child) {
-    labelCon[0].appendChild(child);
+    targetZones.forEach(zone => {
+   
+    if(zone.firstElementChild) {
+
+        labelBox.appendChild(zone.firstElementChild);
+    }
+    });
 }
-});
-}
+
 
 
 
